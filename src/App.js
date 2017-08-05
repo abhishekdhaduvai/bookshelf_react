@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 import ListBooks from './Components/ListBooks.js';
+import Search from './Components/Search.js'
 import * as BooksAPI from './BooksAPI.js';
 
 class App extends Component {
@@ -19,12 +20,21 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ListBooks books={this.state.books} />
-        <div className='add-button'>
-          <a className="btn-floating btn-large waves-effect waves-light">
-              <i className="material-icons">add</i>
-          </a>
-        </div>
+        <Route exact path="/" render={()=>(
+          <div>
+            <nav>
+              <div className='logo'>
+                <a href="/">Your Shelf</a>
+              </div>
+            </nav>
+            <ListBooks books={this.state.books} />
+          </div>      
+        )} /> 
+
+        <Route exact path="/search" render={()=>(
+          <Search />
+        )}  />  
+
       </div>
     );
   }

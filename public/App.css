@@ -6,6 +6,7 @@
 
 nav{
     background: #2196F3;
+    margin-bottom: 1em;
 }
 
 .books-container{
@@ -41,7 +42,35 @@ nav{
 }
 
 .add-button{
-    position: absolute;
+    position: fixed;
     bottom: 1em;
     right: 1em;
+}
+
+.search-wrapper{
+    margin: 1em 2em;
+    overflow: hidden;
+    height: 3em;
+}
+
+#search{
+    margin:0px;
+    padding: 0em 3em;
+}
+
+#back-icon{
+    position: relative;
+    top:-35px;
+    margin-left: 10px;
+}
+
+#back-icon:hover{
+    cursor: pointer;
+}
+
+#search-icon{
+    float:right;
+    position: relative;
+    top:-35px;
+    margin-right: 10px;
 }
