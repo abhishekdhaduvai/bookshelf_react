@@ -1,0 +1,47 @@
+.logo{
+    margin-left: 1em;
+    font-size: xx-large;
+    font-family: "Roboto", sans-serif;
+}
+
+nav{
+    background: #2196F3;
+}
+
+.books-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-tile{
+    padding: 1em;
+    width:12em;
+}
+
+.book-author{
+    font-size: x-small;
+    color: grey;
+}
+
+.book-image{
+    width: 10em;
+    height: 11.5em;
+    overflow: hidden;
+}
+
+.book-title{
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.btn-floating{
+    top:-2em;
+    float:right;
+    background: #2196F3;
+}
+
+.add-button{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
