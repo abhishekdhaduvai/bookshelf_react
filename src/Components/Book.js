@@ -17,7 +17,7 @@ class Book extends Component {
                 document.getElementById(dropdowns[i].id).style.display = "none";  
             }
             document.getElementById(book.id).style.display = "block";  
-            document.getElementById(book.id).style.opacity = "1";  
+            document.getElementById(book.id).style.opacity = "1";
         }
 
         return (
@@ -32,11 +32,23 @@ class Book extends Component {
                     </a>
 
                     <ul id={book.id} className="dropdown">
-                        <li onClick={() => updateShelf(book, "currentlyReading")}><a>Currently Reading</a></li>
+                        <li 
+                            onClick={() => updateShelf(book, "currentlyReading")}
+                            className = {book.shelf === "currentlyReading" ? "active" : "inactive"}>
+                            <a>Currently Reading</a>
+                        </li>
                         <div className="divider" />
-                        <li onClick={() => updateShelf(book, "wantToRead")}><a>Want To Read</a></li>
+                        <li 
+                            onClick={() => updateShelf(book, "wantToRead")}
+                            className = {book.shelf === "wantToRead" ? "active" : "inactive"}>
+                            <a>Want To Read</a>
+                        </li>
                         <div className="divider" />
-                        <li onClick={() => updateShelf(book, "read")}><a>Read</a></li>
+                        <li 
+                            onClick={() => updateShelf(book, "read")}
+                            className = {book.shelf === "read" ? "active" : "inactive"}>
+                            <a>Read</a>
+                        </li>
                     </ul>
 
                 </div>
