@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
 import * as BooksAPI from '../BooksAPI.js';
 import Book from './Book.js';
 

@@ -10,8 +10,7 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10",
-    "react-toolbox": "^2.0.0-beta.12",
-    "sort-by": "^1.2.0"
+    "react-toolbox": "^2.0.0-beta.12"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -110,3 +110,7 @@ h5{
 a:hover{
     cursor: pointer;
 }
+
+.active:before{
+    content: '\2713   ';
+}
