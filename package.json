@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "materialize-css": "^0.100.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10",
-    "react-toolbox": "^2.0.0-beta.12"
+    "react-toolbox": "^2.0.0-beta.12",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

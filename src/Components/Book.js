@@ -2,21 +2,46 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Book extends Component {
+
+    static PropTypes = {
+        book: PropTypes.object.isRequired,
+        updateShelf: PropTypes.func.isRequired
+	}
     
     render(){
-        const { book } = this.props;
+        const { book, updateShelf } = this.props;
+
+        function showMenu(book){
+            var dropdowns = document.getElementsByClassName("dropdown");
+            for(var i=0; i<dropdowns.length; i++){
+                document.getElementById(dropdowns[i].id).style.display = "none";  
+            }
+            document.getElementById(book.id).style.display = "block";  
+            document.getElementById(book.id).style.opacity = "1";  
+        }
+
         return (
-            <div className='book-tile'>
-                <div className='book-thumbnail'>
-                    <div className='book-image'>
-                        <img src={book.imageLinks.thumbnail} />
+            <div className="book-tile">
+                <div className="book-thumbnail">
+                    <div className="book-image">
+                        <img src={book.imageLinks.thumbnail} alt="book-thumbnail"/>
                     </div>                    
-                    <a className="btn-floating btn-small waves-effect waves-light red">
+                     <a className="btn-floating btn-small waves-effect waves-light red dropdown-button btn" 
+                       onClick={() => showMenu(book)}>
                         <i className="material-icons">expand_more</i>
                     </a>
+
+                    <ul id={book.id} className="dropdown">
+                        <li onClick={() => updateShelf(book, "currentlyReading")}><a>Currently Reading</a></li>
+                        <div className="divider" />
+                        <li onClick={() => updateShelf(book, "wantToRead")}><a>Want To Read</a></li>
+                        <div className="divider" />
+                        <li onClick={() => updateShelf(book, "read")}><a>Read</a></li>
+                    </ul>
+
                 </div>
-                <div className='book-title'>{book.title}</div>
-                <div className='book-author'>{book.authors[0]}</div>
+                <div className="book-title">{book.title}</div>
+                <div className="book-author">{book.authors[0]}</div>
             </div>
         )
     }
