@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Book extends Component {
 
-    static PropTypes = {
+    PropTypes = {
         book: PropTypes.object.isRequired,
         updateShelf: PropTypes.func.isRequired
 	}
@@ -23,10 +23,12 @@ class Book extends Component {
         return (
             <div className="book-tile">
                 <div className="book-thumbnail">
+
                     <div className="book-image">
-                        <img src={book.imageLinks.thumbnail} alt="book-thumbnail"/>
-                    </div>                    
-                     <a className="btn-floating btn-small waves-effect waves-light red dropdown-button btn" 
+                        {book.imageLinks && <img src={book.imageLinks.thumbnail} alt="book-thumbnail"/>}
+                    </div>
+
+                    <a className="btn-floating btn-small waves-effect waves-light red dropdown-button btn" 
                        onClick={() => showMenu(book)}>
                         <i className="material-icons">expand_more</i>
                     </a>
@@ -52,8 +54,11 @@ class Book extends Component {
                     </ul>
 
                 </div>
+                
                 <div className="book-title">{book.title}</div>
-                <div className="book-author">{book.authors[0]}</div>
+                {book.authors && book.authors.map(author => (
+                    <div className="book-author" key={author}>{author}</div>
+                ))}
             </div>
         )
     }

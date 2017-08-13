@@ -12,7 +12,21 @@ class Search extends Component {
     }
 
     updateQuery = function (input){
-		this.setState({query: input.trim()})
+        this.setState({query: input.trim()})
+        let {query} = this.state;
+        if(query === ""){
+            this.setState({book: []});
+        }
+        else{
+            BooksAPI.search(query, 5).then((books)=>{
+                if(books.error){
+                    this.setState({books:[]})
+                }
+                else{
+                    this.setState({books});
+                }
+            });
+        }
     }
 
     updateShelf = (updatedBook, shelf) => {
@@ -27,22 +41,8 @@ class Search extends Component {
         document.getElementById(updatedBook.id).style.display = "none";
     }
     
-    componentDidMount(){
-        BooksAPI.getAll().then((books)=>{
-            this.setState({ books });
-        });
-    }
-    
     render(){
-        let showingBooks;
         const {query, books} = this.state;
-        if(query){
-			const match = new RegExp(escapeRegExp(query),'i');
-			showingBooks = books.filter((book) => match.test(book.title))
-        }
-        else{
-            showingBooks = [];
-        }
         return (
             <div>
                 <div className="search-wrapper card">
@@ -56,7 +56,7 @@ class Search extends Component {
                     <i className="material-icons" id="search-icon">search</i>                    
                 </div>
                 <div className="books-container">
-                    {showingBooks.map(book => (
+                    {books.map(book => (
                         <Book 
                             key={book.id} 
                             book={book}
