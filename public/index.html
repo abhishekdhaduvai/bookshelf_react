@@ -31,17 +31,5 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <script>
-      window.addEventListener('click', function(e){
-            var dropdowns = document.getElementsByClassName('dropdown');
-            for(var i=0; i<dropdowns.length; i++){
-              if(document.getElementById(dropdowns[i].id).style.display === "block"){
-                if(e.target.className != "material-icons"){
-                  document.getElementById(dropdowns[i].id).style.display = 'none';
-                }
-              }
-            }
-        });
-    </script>
   </body>
 </html>

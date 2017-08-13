@@ -25,7 +25,6 @@ class ListBooks extends Component {
             });
         });
         BooksAPI.update(updatedBook, shelf);
-        document.getElementById(updatedBook.id).style.display = "none";
     }
 
     render(){
