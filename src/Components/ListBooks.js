@@ -56,7 +56,7 @@ class ListBooks extends Component {
                         </div>
                     </Link>                    
                 </div>
-                
+
             </div>
         )
     }

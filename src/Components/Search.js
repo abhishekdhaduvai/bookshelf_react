@@ -7,17 +7,26 @@ class Search extends Component {
 
     state = {
         query: '',
-        books:[]
+        books:[],
+        shelvedBooks: []
     }
 
     updateQuery = function (input){
         this.setState({query: input});
+        const {shelvedBooks} = this.state;
         if(input){
             BooksAPI.search(input, 20).then((books)=>{
                 if(books.error){
                     this.setState({books:[]});
                 }
                 else{
+                    for(var i=0; i<shelvedBooks.length; i++){
+                        for(var j=0; j<books.length; j++){
+                            if(shelvedBooks[i].id === books[j].id){
+                                books[j].shelf = shelvedBooks[i].shelf;
+                            }
+                        }
+                    }
                     this.setState({books});
                 }
             });
@@ -37,6 +46,12 @@ class Search extends Component {
             });
         });
         BooksAPI.update(updatedBook, shelf);
+    }
+
+    componentDidMount(){
+        BooksAPI.getAll().then(books => {
+            this.setState({ shelvedBooks: books });
+        })
     }
     
     render(){
