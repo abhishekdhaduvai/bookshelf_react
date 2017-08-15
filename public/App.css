@@ -12,6 +12,8 @@ nav{
 .books-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em;
 }
 
 .book-tile{
@@ -79,11 +81,12 @@ nav{
 h5{
     padding-left: 1em;
     color: #424242;
+    text-align: center;
 }
 
 .divider{
     width: 75%;
-    margin-left: 0.5em;
+    margin: auto;
 }
 
  .dropdown{
