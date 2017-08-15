@@ -11,24 +11,9 @@ class Search extends Component {
     }
 
     updateQuery = function (input){
-        this.setState({query: input})
-    }
-
-    updateShelf = (updatedBook, shelf) => {
-        this.setState((state)=>{
-            this.state.books.map((book) => {
-                if(book.id === updatedBook.id){
-                    book.shelf = shelf;
-                }
-            });
-        });
-        BooksAPI.update(updatedBook, shelf);
-    }
-    
-    render(){
-        const {query, books} = this.state;
-        if(query){
-            BooksAPI.search(query, 20).then((books)=>{
+        this.setState({query: input});
+        if(input){
+            BooksAPI.search(input, 20).then((books)=>{
                 if(books.error){
                     this.setState({books:[]});
                 }
@@ -37,6 +22,25 @@ class Search extends Component {
                 }
             });
         }
+        else{
+            this.setState({books:[]});
+        }
+    }
+
+    updateShelf = (updatedBook, shelf) => {
+        this.setState((state)=>{
+            this.state.books.map((book) => {
+                if(book.id === updatedBook.id){
+                    book.shelf = shelf;
+
+                }
+            });
+        });
+        BooksAPI.update(updatedBook, shelf);
+    }
+    
+    render(){
+        const {query, books} = this.state;
         return (
             <div>
                 <div className="search-wrapper card">
